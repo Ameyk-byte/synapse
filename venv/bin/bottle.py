@@ -1,4 +1,4 @@
-#!/Users/ameykhandwala/Downloads/DES646-main/venv/bin/python3
+#!/Users/ameykhandwala/Downloads/DES646-main/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 """

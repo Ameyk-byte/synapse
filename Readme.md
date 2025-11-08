@@ -44,7 +44,7 @@ Personalized Learning Recommender.
 
 ### Clone the Repo
 ```bash
-git clone https://github.com/Ameyk-byte/DES646.git
+git clone https://github.com/Ameyk-byte/DES646
 cd DES646
 
 cd ~/Downloads/DES646-main
@@ -62,6 +62,7 @@ After launching Neuro:
 - Speak: "Neuro recommend resources for python"
 
 No wake word required, no clicking buttons.
+
 
 
 

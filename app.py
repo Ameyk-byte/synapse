@@ -94,7 +94,7 @@ class NeuroApp(QMainWindow):
 
         chatLayout.addLayout(inputLayout)
 
-        # ✅ Siri-style waveform bar
+    
         self.wave = WaveformWidget()
         self.wave.setFixedHeight(60)
         chatLayout.addWidget(self.wave)

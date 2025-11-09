@@ -6,7 +6,7 @@ import google.generativeai as genai
 env = dotenv_values(".env")
 GEMINI_API_KEY = env.get("GEMINI_API_KEY")
 
-# ✅ Configure Gemini correctly (new API)
+# Configure Gemini correctly
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Valid function types

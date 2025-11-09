@@ -7,7 +7,7 @@ from rich import print
 from bs4 import BeautifulSoup
 import requests
 
-# ✅ Import your chatbot (Gemini-powered)
+# Import your chatbot (Gemini-powered)
 from Backend.Chatbot import ChatBot
 
 # ========= MQTT (IoT) CONFIG =========
@@ -73,14 +73,14 @@ def CloseApp(app):
     except:
         return False
 
-# ✅ AI CONTENT WRITING + MAC TEXTEDIT
+# AI CONTENT WRITING + MAC TEXTEDIT
 def Content(topic):
     os.makedirs("Data", exist_ok=True)
 
     prompt = f"Write a fully formatted, grammatically correct and professional document about: {topic}"
     ai_text = ChatBot(prompt)
 
-    # ✅ Fallback: ensure text is not empty
+    # Fallback: ensure text is not empty
     if not ai_text or ai_text.strip() == "":
         ai_text = f"Unable to auto-generate detailed content for: {topic}. Please refine the topic."
 
@@ -91,7 +91,7 @@ def Content(topic):
         with open(path, "w", encoding="utf-8") as f:
             f.write(ai_text)
 
-        # ✅ Mac version opens in TEXTEDIT
+        # Mac version opens in TEXTEDIT
         os.system(f"open -a TextEdit '{path}'")
         return True
 
@@ -99,7 +99,7 @@ def Content(topic):
         print("Content file error:", e)
         return False
 
-# ✅ Mac Volume
+# Mac Volume
 def System(command):
     if command == "volume up":
         os.system("osascript -e 'set volume output volume (output volume of (get volume settings) + 10)'")
@@ -113,7 +113,7 @@ def System(command):
         return False
     return True
 
-# ✅ IoT device control
+#  IoT device control
 def control_device(device, state):
     if device not in device_names:
         return f"No such IoT device: {device}"

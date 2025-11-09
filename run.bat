@@ -14,6 +14,6 @@ call venv\Scripts\activate
 pip install -r requirements.txt >nul
 
 echo ✅ Launching Neuro
-python main.py
+python Main.py
 
 pause

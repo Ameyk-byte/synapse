@@ -62,5 +62,21 @@
     {
         "role": "assistant",
         "content": "Hello Amey.\n\nArtificial Intelligence is the simulation of human intelligence in machines, enabling them to learn, reason, and solve problems."
+    },
+    {
+        "role": "user",
+        "content": "learning resources for AI"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello Amey. Here are a few excellent resources:\n\n*   **Courses:** Coursera (Machine Learning by Andrew Ng), fast.ai.\n*   **Books:** \"Deep Learning with Python\" by Fran\u00e7ois Chollet.\n*   **YouTube:** 3Blue1Brown for core concepts."
+    },
+    {
+        "role": "user",
+        "content": "recommend me resources for AI"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello Amey.\n\nHere are some recommended resources for learning AI:\n\n*   **Online Courses:** edX offers courses from universities like Harvard and MIT.\n*   **Books:** \"Artificial Intelligence: A Modern Approach\" is a comprehensive textbook.\n*   **Communities:** Kaggle is a great platform for practical projects and competitions."
     }
 ]

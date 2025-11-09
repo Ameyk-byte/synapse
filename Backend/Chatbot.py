@@ -99,13 +99,13 @@ def ChatBot(Query: str) -> str:
 
         Answer = safe_extract(response)
 
-        # ✅ If Gemini sends NO valid content, retry with safer prompt
+        #  If Gemini sends NO valid content, retry with safer prompt
         if Answer is None or Answer.strip() == "":
             safe_prompt = f"{SYSTEM_MESSAGE}\nAnswer briefly: {Query}"
             response2 = model.generate_content(safe_prompt)
             Answer = safe_extract(response2)
 
-        # ✅ If still empty, final fallback
+        #  If still empty, final fallback
         if Answer is None or Answer.strip() == "":
             Answer = "I'm unable to generate a response right now."
 

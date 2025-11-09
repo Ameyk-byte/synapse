@@ -12,5 +12,5 @@ fi
 source venv/bin/activate
 pip install -r requirements.txt >/dev/null
 
-python3 main.py
+python3 Main.py
 

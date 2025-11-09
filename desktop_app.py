@@ -1,8 +1,8 @@
 # desktop_app.py — Neuro Desktop App (Gemini + Mac/Windows)
-import sys, os, html, webbrowser, threading , asyncio
+import sys, os, html, webbrowser, threading, asyncio, re
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-# Correct backend imports
+# ---- Backend imports ----
 from Backend.SpeechToText import SpeechRecognition
 from Backend.TextToSpeech import TextToSpeech
 from Backend.Model import FirstLayerDMM
@@ -37,8 +37,7 @@ class BackendAdapter:
 
     def classify(self, query: str):
         try:
-            decisions = FirstLayerDMM(query)
-            return decisions
+            return FirstLayerDMM(query)
         except Exception:
             return ["general " + query]
 
@@ -63,46 +62,44 @@ class Worker(QtCore.QObject):
         decisions = self.backend.classify(self.query)
         d = decisions[0]
 
-        # Learning Recommender
+        # ✅ Learning recommender
         if d.startswith("LearningRecommender"):
             text, payload = LearningRecommender(self.query)
             result = f"📚 {text}"
             self.finished.emit(result)
             return
 
-        # Image generation
+        # ✅ Image generation
         if d.startswith("generate image"):
             prompt = d.replace("generate image ", "")
             GenerateImage(prompt)
             self.finished.emit("🖼 Image generated successfully.")
             return
 
-        # IoT
+        # ✅ IoT
         if d.startswith("iot"):
             cmd = d.replace("iot ", "")
             ans = iot(cmd)
             self.finished.emit(f"🔧 {ans}")
             return
 
-        # Automation tasks
+        # ✅ Automation
         if any(d.startswith(x) for x in ["open","close","play","system"] for d in decisions):
             try:
                 asyncio.run(Automation(decisions))
             except RuntimeError:
-        # If event loop already running (PyQt case)
                 loop = asyncio.get_event_loop()
                 loop.create_task(Automation(decisions))
-        
-            self.finished.emit(intent, "Task executed.")
+            self.finished.emit("✅ Task executed.")
             return
 
-        # Real-time search
+        # ✅ Real-time search
         if d.startswith("realtime"):
             ans = RealtimeSearchEngine(self.query)
             self.finished.emit(ans)
             return
 
-        # General Chatbot
+        # ✅ General chatbot
         ans = self.backend.answer_general(self.query)
         self.finished.emit(ans)
 
@@ -116,18 +113,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setWindowTitle("Neuro AI Assistant")
         self.resize(950, 650)
 
-        try:
-            icon_path = os.path.join("logo.png")
-            if os.path.exists(icon_path):
-                self.setWindowIcon(QtGui.QIcon(icon_path))
-        except:
-            pass
+        icon_path = "logo.png"
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QtGui.QIcon(icon_path))
 
         root = QtWidgets.QWidget()
         self.setCentralWidget(root)
 
-        self.chat = QtWidgets.QTextEdit()
+        # ✅ QTextBrowser supports hyperlinks
+        self.chat = QtWidgets.QTextBrowser()
         self.chat.setReadOnly(True)
+        self.chat.setOpenExternalLinks(True)
+        self.chat.setOpenLinks(True)
 
         self.input = QtWidgets.QLineEdit()
         self.input.setPlaceholderText("Ask Neuro…")
@@ -153,11 +150,15 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.say_assistant("✅ Neuro desktop app started!")
 
+
     def say_user(self, text):
         self.chat.append(f"<b>You:</b> {html.escape(text)}")
 
     def say_assistant(self, text):
-        self.chat.append(f"<b style='color:#00eaff'>Neuro:</b> {html.escape(text)}")
+        # ✅ Convert URLs into clickable links
+        url_pattern = r'(https?://[^\s]+)'
+        text = re.sub(url_pattern, r'<a href="\1">\1</a>', text)
+        self.chat.append(f"<b style='color:#00eaff'>Neuro:</b> {text}")
 
     def on_send(self):
         msg = self.input.text().strip()
@@ -203,7 +204,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_result(self, answer):
         self.say_assistant(answer)
-        self.backend.speak(answer)
+        # Speak without tags
+        clean_text = re.sub('<[^<]+?>', '', answer)
+        self.backend.speak(clean_text)
 
 
 # -------- MAIN --------
@@ -215,4 +218,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-p

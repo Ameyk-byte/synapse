@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV=/Users/ameykhandwala/Downloads/DES646-main/venv
+VIRTUAL_ENV=/Users/ameykhandwala/Desktop/DES_SYNAPSE/Prototype/DES646-main-SYNAPSE/venv
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

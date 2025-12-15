@@ -4,7 +4,7 @@ import sounddevice as sd
 import soundfile as sf
 import tempfile
 
-DURATION_SEC = 4
+DURATION_SEC = 5
 SAMPLE_RATE = 44100
 
 def SpeechRecognition():

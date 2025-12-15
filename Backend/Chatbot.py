@@ -86,7 +86,7 @@ def ChatBot(Query: str) -> str:
     )
 
     try:
-        model = genai.GenerativeModel("gemini-2.5-pro")
+        model = genai.GenerativeModel("gemini-1.5-flash")
 
         response = model.generate_content(
             full_prompt,

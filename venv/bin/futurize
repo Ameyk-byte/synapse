@@ -1,4 +1,4 @@
-#!/Users/ameykhandwala/Downloads/DES646-main/venv/bin/python3.10
+#!/Users/ameykhandwala/Desktop/DES_SYNAPSE/Prototype/DES646-main-SYNAPSE/venv/bin/python3.10
 import sys
 from libfuturize.main import main
 if __name__ == '__main__':

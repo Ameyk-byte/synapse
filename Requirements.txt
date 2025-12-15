@@ -40,7 +40,7 @@ keyboard==0.13.5
 pynput==1.7.6
 
 # Installing OS Apps & Browser actions
-AppOpener==1.7
+
 
 # YouTube / WhatsApp automation
 pywhatkit==5.4

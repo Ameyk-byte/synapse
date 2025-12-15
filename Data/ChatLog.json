@@ -78,5 +78,21 @@
     {
         "role": "assistant",
         "content": "Hello Amey.\n\nHere are some recommended resources for learning AI:\n\n*   **Online Courses:** edX offers courses from universities like Harvard and MIT.\n*   **Books:** \"Artificial Intelligence: A Modern Approach\" is a comprehensive textbook.\n*   **Communities:** Kaggle is a great platform for practical projects and competitions."
+    },
+    {
+        "role": "user",
+        "content": "recommend some resources for"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello Amey.\n\nCould you please specify what topic you would like resources for?"
+    },
+    {
+        "role": "user",
+        "content": "bioinformatics"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello Amey.\n\nHere are some resources for bioinformatics:\n\n*   **Online Courses:** Coursera's \"Bioinformatics Specialization\" from UC San Diego.\n*   **Books:** \"Bioinformatics for Dummies\" for beginners.\n*   **Tools:** NCBI (National Center for Biotechnology Information) provides databases and tools."
     }
 ]

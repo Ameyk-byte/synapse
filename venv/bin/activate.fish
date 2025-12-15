@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /Users/ameykhandwala/Downloads/DES646-main/venv
+set -gx VIRTUAL_ENV /Users/ameykhandwala/Desktop/DES_SYNAPSE/Prototype/DES646-main-SYNAPSE/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

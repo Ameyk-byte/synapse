@@ -1,4 +1,4 @@
-# desktop_app.py — Neuro Desktop App (Gemini + Mac/Windows)
+# desktop_app.py — Neuro Desktop App
 import sys, os, html, webbrowser, threading, asyncio, re
 from PyQt5 import QtCore, QtGui, QtWidgets
 
